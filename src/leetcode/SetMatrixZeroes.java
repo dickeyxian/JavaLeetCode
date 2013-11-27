@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
 
 public class SetMatrixZeroes {
 	public static void setZeroes(int[][] matrix) {//O(m+n) space
