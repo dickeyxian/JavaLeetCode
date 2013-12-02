@@ -18,15 +18,54 @@ public class ReverseLinkedListII {
 		if (m == n) {
 			return head;
 		}
+		ListNode p = new ListNode(0);
+		ListNode pre = p;
+		ListNode middle = null;
+		ListNode e = new ListNode(0);
+		ListNode end = e;
 		ListNode node = null;
 		int count = 0;
 		while (head != null) {
 			count++;
-			if (count == m) {
-				
+			if (m == n + 1) {
+				node = new ListNode(head.val);
+				end.next = node;
+				end = node;
+				m++;
+				n++;
+				head = head.next;
+			} else if (count == m) {
+				node = new ListNode(head.val);
+				node.next = middle;
+				middle = node;
+				m++;
+				head = head.next;
+			} else {
+				node = new ListNode(head.val);
+				pre.next = node;
+				pre = node;
+				head = head.next;
+
 			}
 		}
-		return node;
+		ListNode premiddle = contactlink(p.next, middle);
+		ListNode result = contactlink(premiddle, e.next);
+		return result;
+	}
+
+	public static ListNode contactlink(ListNode l1, ListNode l2) {
+		if (l1 == null) {
+			return l2;
+		}
+		if (l2 == null) {
+			return l1;
+		}
+		ListNode temp = l1;
+		while (temp.next != null) {
+			temp = temp.next;
+		}
+		temp.next = l2;
+		return l1;
 	}
 
 	public static ListNode MakeLinkedList(int d[]) {
@@ -59,9 +98,11 @@ public class ReverseLinkedListII {
 	}
 
 	public static void main(String[] args) {
-		int d[] = { 1, 9, 3, 4, 5 };
+		int d[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
 		ListNode link = MakeLinkedList(d);
-		printLink(link);
+		// printLink(link);
+		ListNode result = reverseBetween(link, 2, 8);
+		printLink(result);
 	}
 
 }
