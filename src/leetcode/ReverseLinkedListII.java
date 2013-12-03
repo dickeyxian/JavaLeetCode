@@ -68,6 +68,33 @@ public class ReverseLinkedListII {
 		return l1;
 	}
 
+	public static ListNode reverseBetween2(ListNode head, int m, int n) {
+		ListNode q = null;
+		ListNode p = head;
+		for (int i = 0; i < m - 1; i++) {
+			q = p;
+			p = p.next;
+		}
+		ListNode end = p;
+		ListNode prep = p;
+		p = p.next;
+		for (int i = m + 1; i <= n; i++) {
+			ListNode pnext = p.next;
+			p.next = prep;
+			prep = p;
+			p = pnext;
+		
+		}
+
+		end.next = p;
+		if (q != null) {
+			q.next = prep;
+		} else {
+			head = prep;
+		}
+		return head;
+	}
+
 	public static ListNode MakeLinkedList(int d[]) {
 		// ListNode tail = new ListNode(d[0]);
 		// // ListNode pre = head;
@@ -101,7 +128,7 @@ public class ReverseLinkedListII {
 		int d[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
 		ListNode link = MakeLinkedList(d);
 		// printLink(link);
-		ListNode result = reverseBetween(link, 2, 8);
+		ListNode result = reverseBetween2(link, 3, 5);
 		printLink(result);
 	}
 
