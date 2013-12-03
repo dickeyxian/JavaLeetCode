@@ -44,7 +44,7 @@ public class RemoveDuplicatesfromSortedList {
 	public static void main(String[] args) {
 		int d[] = { 1, 1, 2, 2 };
 		ListNode link = MakeLinkedList(d);
-		ListNode result = deleteDuplicates(link);
+		deleteDuplicates(link);
 		printLink(link);
 	}
 
