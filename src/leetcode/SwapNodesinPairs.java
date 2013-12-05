@@ -18,6 +18,18 @@ public class SwapNodesinPairs {
 		}
 		return p.next;
 	}
+	public static ListNode reverseList(ListNode headerNode){
+		ListNode currNode = headerNode;
+		ListNode prevNode = null;
+		ListNode nextNode = null;
+		while (currNode != null) {
+			nextNode = currNode.next;
+			currNode.next = prevNode;
+			prevNode = currNode;
+			currNode = nextNode;
+		}
+		return prevNode;
+	}
 
 	public static ListNode MakeLinkedList(int d[]) {
 		ListNode head = new ListNode(d[0]);
@@ -40,11 +52,12 @@ public class SwapNodesinPairs {
 	}
 
 	public static void main(String[] args) {
-		int d[] = { 1};
+		int d[] = {1,2,3,4,5,6};
 		ListNode link = MakeLinkedList(d);
-		// printLink(link);
-		ListNode result = swapPairs(link);
+		ListNode result = reverseList(link);
 		printLink(result);
+		//ListNode result = swapPairs(link);
+		//printLink(result);
 	}
 
 }
