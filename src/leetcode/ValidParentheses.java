@@ -10,6 +10,9 @@ public class ValidParentheses {
 		String left = "({[";
 		String right = ")}]";
 		Stack<Character> stack = new Stack<Character>();
+		if(right.indexOf(s.charAt(0)) != -1){
+			return false;
+		}
 		stack.push(s.charAt(0));
 		for (int i = 1; i < s.length(); i++) {
 			if (stack.isEmpty() || right.indexOf(s.charAt(i)) == -1
